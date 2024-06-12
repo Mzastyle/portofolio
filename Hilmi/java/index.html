@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Form Data Diri</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 8px;
+        }
+
+        input {
+            width: 100%;
+            padding: 8px;
+            margin-bottom: 16px;
+        }
+
+        button {
+            padding: 10px;
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background-color: #45a049;
+        }
+
+        .error-message {
+            color: red;
+            margin-bottom: 10px;
+        }
+    </style>
+</head>
+<body>
+
+    <h2>Form Data Diri</h2>
+
+    <form id="formDataDiri">
+        <label for="nama">Nama:</label>
+        <input type="text" id="nama" name="nama" required>
+
+        <label for="umur">Umur:</label>
+        <input type="number" id="umur" name="umur" required>
+
+        <label for="alamat">Alamat:</label>
+        <input type="text" id="alamat" name="alamat" required>
+
+        <div class="error-message" id="error-message"></div>
+
+        <button type="button" onclick="submitForm()">Submit</button>
+    </form>
+
+    <script>
+        function submitForm() {
+            var nama = document.getElementById('nama').value;
+            var umur = document.getElementById('umur').value;
+            var alamat = document.getElementById('alamat').value;
+            var errorMessage = document.getElementById('error-message');
+
+            // Validasi data
+            if (nama === '' || umur === '' || alamat === '') {
+                errorMessage.textContent = 'Harap lengkapi semua kolom.';
+                return;
+            }
+
+            if (isNaN(umur) || umur <= 0) {
+                errorMessage.textContent = 'Umur harus berupa angka positif.';
+                return;
+            }
+
+            // Jika validasi sukses
+            errorMessage.textContent = '';
+
+            // Proses pengiriman data (di sini bisa disubmit ke server atau diolah lebih lanjut)
+            console.log('Data Diri:');
+            console.log('Nama:', nama);
+            console.log('Umur:', umur);
+            console.log('Alamat:', alamat);
+
+            // Jika ingin mengirim data ke server, tambahkan kode AJAX di sini
+        }
+    </script>
+
+</body>
+</html>

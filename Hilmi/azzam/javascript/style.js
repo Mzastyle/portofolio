@@ -1,0 +1,1 @@
+let tamu =user == 'admin' ?console.log('selamat datang admin')
